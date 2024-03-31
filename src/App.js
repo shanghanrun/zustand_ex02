@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Box from './components/Box';
+import {useCount} from './store'
 
 function App() {
+  const {count, increment, decrement, login, reset} = useCount();
+  function handleLogin(){
+    console.log('로그인')
+    login('myId', '1234')
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <div>Count: {count}</div>
+        <button onClick={increment}>증가</button>
+        <button onClick={decrement}>감소</button>
+        <Box />
+        <button onClick={handleLogin}>로그인</button>
+        <button id='reset' onClick={reset}>리셋</button>
     </div>
   );
 }
